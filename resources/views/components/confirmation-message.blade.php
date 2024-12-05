@@ -1,11 +1,6 @@
 <div
   x-data='{ open: false, action: "", id: "", message: ""}'
-  x-init="@this.on('openConfirmationModal', (actionObject) => {
-    open = true;
-    action = actionObject.id;
-    id = actionObject.modelId;
-    message = actionObject.message;
-  })"
+  x-on:openConfirmationModal.window="open = true; action = event.detail.actionObject.id; id = event.detail.actionObject.modelId; message = event.detail.actionObject.message"
 >
   <div x-show="open" x-cloak>
     <x-lv-modal>

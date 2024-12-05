@@ -1,12 +1,7 @@
 <div
   x-cloak
   x-data='{ open: false, message: "", type: "success" }'
-  x-init="@this.on('notify', (notification) => {
-    open = true;
-    message = notification.message;
-    type = notification.type;
-    {{-- setTimeout(() => { open = false }, 2500) --}}
-  })"
+  x-on:notify.window="open = true; message = $event.detail.notification.message; type = $event.detail.notification.type"
 >
   <div x-show="open && type === 'danger'">
     <x-lv-alert type='danger' onClose='open = false'>
