@@ -1,5 +1,5 @@
 {
-    "name": "carpool/laravel-views",
+    "name": "carpool-logistics/laravel-views",
     "description": "Laravel package to create beautiful common views like tables using only PHP code",
     "type": "library",
     "license": "MIT",
