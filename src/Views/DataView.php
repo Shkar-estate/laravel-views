@@ -35,9 +35,6 @@ abstract class DataView extends View
     /** @var String $filters Current query string with the filters value */
     public $filters = [];
 
-    /** @var Array<BaseFilter> $filtersViews All filters customized in the child class */
-    public $filtersViews;
-
     /** @var Array<String> $searchBy All fields to search */
     public $searchBy;
 
@@ -48,14 +45,8 @@ abstract class DataView extends View
     public $selected = [];
     public $allSelected = false;
 
-    public function hydrate()
-    {
-        $this->filtersViews = $this->filters();
-    }
-
     public function mount(QueryStringData $queryStringData)
     {
-        $this->filtersViews = $this->filters();
         $this->search = $queryStringData->getSearchValue($this->search);
 
         $this->filters = $queryStringData->getFilterValues($this->filters);
@@ -67,7 +58,7 @@ abstract class DataView extends View
     }
 
     /**
-     * Check if each of the filters has a default value and it's not already set
+     * Check if each of the filters has a default value, and it's not already set
      */
     public function applyDefaultFilters()
     {
@@ -86,7 +77,8 @@ abstract class DataView extends View
     {
         return [
             'items' => $this->paginatedQuery,
-            'actionsByRow' => $this->actionsByRow()
+            'actionsByRow' => $this->actionsByRow(),
+            'filtersViews' => $this->filtersViews
         ];
     }
 
@@ -121,7 +113,7 @@ abstract class DataView extends View
 
     /**
      * Clones the initial query (to avoid modifying it)
-     * and get a model by an Id
+     * and get a model by an id
      */
     public function getModelWhoFiredAction($id)
     {
@@ -133,6 +125,11 @@ abstract class DataView extends View
         $this->selected = $value ? $this->paginatedQuery->pluck('id')->map(function ($id) {
             return (string)$id;
         })->toArray() : [];
+    }
+
+    public function getFiltersViewsProperty()
+    {
+        return $this->filters();
     }
 
     public function getInitialQueryProperty()

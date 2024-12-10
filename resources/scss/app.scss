@@ -1,4 +1,5 @@
-@import "~pikaday/scss/pikaday.scss";
+@import "pikaday/scss/pikaday.scss";
 @import "custom-utilities";
+@import "tailwindcss";
 
 [x-cloak] { display: none !important; }

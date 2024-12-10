@@ -79,9 +79,8 @@ class LaravelViewsServiceProvider extends ServiceProvider
     private function publish()
     {
         $this->publishes([
-            __DIR__ . '/../public/laravel-views.js' => public_path('vendor/laravel-views.js'),
-            __DIR__ . '/../public/laravel-views.css' => public_path('vendor/laravel-views.css'),
-            __DIR__ . '/../public/tailwind.css' => public_path('vendor/tailwind.css'),
+            __DIR__ . '/../public/build/assets/app-CteXkz6P.js' => public_path('vendor/laravel-views.js'),
+            __DIR__ . '/../public/build/assets/app-BtW5cAW6.css' => public_path('vendor/laravel-views.css'),
         ], 'public');
 
         $this->publishes([
