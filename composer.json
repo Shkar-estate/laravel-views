@@ -1,5 +1,5 @@
 {
-    "name": "carpool-logistics/laravel-views",
+    "name": "laravel-views/laravel-views",
     "description": "Laravel package to create beautiful common views like tables using only PHP code",
     "type": "library",
     "license": "MIT",
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "livewire/livewire": "^3.0"
+        "livewire/livewire": "3.*"
     },
     "autoload": {
         "psr-4": {
